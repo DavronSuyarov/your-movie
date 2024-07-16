@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import "./row-movies-item.scss"
 
 const RowMoviesItem = ({ movie, onOpen }) => {
@@ -18,4 +19,8 @@ const RowMoviesItem = ({ movie, onOpen }) => {
 	)
 }
 
+RowMoviesItem.propTypes = {
+	movie: PropTypes.object,
+	onOpen: PropTypes.func,
+}
 export default RowMoviesItem
