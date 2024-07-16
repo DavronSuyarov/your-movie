@@ -1,9 +1,9 @@
+import { object } from "prop-types"
 import React from "react"
 import MovieService from "../../services/movie-service"
 import Error from "../error/error"
 import Spinner from "../spinner/spinner"
 import "./hero.scss"
-
 class Hero extends React.Component {
 	constructor(props) {
 		super(props)
@@ -80,4 +80,8 @@ const Content = ({ movie }) => {
 			</div>
 		</>
 	)
+}
+
+Content.propTypes = {
+	movie: object,
 }

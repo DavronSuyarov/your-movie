@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from "react"
 import { Modal } from "react-responsive-modal"
 import "react-responsive-modal/styles.css"
@@ -7,7 +8,6 @@ import MovieInfo from "../movie-info/movie-info"
 import RowMoviesItem from "../row-movies-item/row-movies-item"
 import Spinner from "../spinner/spinner"
 import "./row-movies.scss"
-
 class RowMovies extends React.Component {
 	state = {
 		loading: true,
@@ -15,7 +15,6 @@ class RowMovies extends React.Component {
 		open: false,
 		movies: [],
 		movieId: null,
-
 		page: 2,
 	}
 	movieServies = new MovieService()
@@ -89,4 +88,9 @@ const Content = ({ movies, onOpen }) => {
 			))}
 		</div>
 	)
+}
+
+Content.propTypes = {
+	movies: PropTypes.array,
+	onOpen: PropTypes.func,
 }
