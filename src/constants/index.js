@@ -1,0 +1,92 @@
+export const movies = [
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2003,
+		duration: 110,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2004,
+		duration: 120,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2005,
+		duration: 130,
+		image: "/image2.svg",
+	},
+	{
+		title: "Movie",
+		date: 2006,
+		duration: 140,
+		image: "/image2.svg",
+	},
+]
