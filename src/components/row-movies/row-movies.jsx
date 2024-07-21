@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import { useEffect, useState } from "react"
 import { Modal } from "react-responsive-modal"
 import "react-responsive-modal/styles.css"
-import MovieService from "../../services/movie-service"
+import useMovieService from "../../services/movie-service"
 import Error from "../error/error"
 import MovieInfo from "../movie-info/movie-info"
 import RowMoviesItem from "../row-movies-item/row-movies-item"
@@ -13,41 +13,32 @@ const RowMovies = () => {
 	const [movies, setMovies] = useState([])
 	const [movieId, setMovieId] = useState(null)
 	const [page, setPage] = useState(2)
-	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState(false)
 	const [open, setOpen] = useState(false)
 
-	const movieServies = new MovieService()
+	const { getTrandingMovies, loading, error } = useMovieService()
 	useEffect(() => {
-		getTrandingMovies()
+		getMovies()
 	}, [])
 
-	const onClose = () => {
-		setOpen(false)
-		this.setState({ open: false })
-	}
+	const onClose = () => setOpen(false)
 	const onOpen = id => {
-		setOpen(true), setMovieId(id)
+		setMovieId(id), setOpen(true)
 	}
 
-	const getTrandingMovies = page => {
-		movieServies
-			.getTrandingMovies(page)
-			.then(res => setMovies(...res))
-			.catch(() => setError(true))
-			.finally(() => setLoading(false))
+	const getMovies = page => {
+		getTrandingMovies(page).then(res =>
+			setMovies(movies => [...movies, ...res])
+		)
 	}
 
 	const getMoreMovies = () => {
 		setPage(page => page + 1)
-		getTrandingMovies(page)
+		getMovies(page)
 	}
 
 	const errorContent = error ? <Error /> : null
 	const loadingContent = loading ? <Spinner /> : null
-	const content = !(error || loading) ? (
-		<Content movies={movies} onOpen={onOpen} />
-	) : null
+
 	return (
 		<div className='rowmovies'>
 			<div className='rowmovies__top'>
@@ -61,7 +52,7 @@ const RowMovies = () => {
 
 			{errorContent}
 			{loadingContent}
-			{content}
+			<Content movies={movies} onOpen={onOpen} />
 
 			<div className='rowmovies__loadmore'>
 				<button className='btn btn-secondary' onClick={getMoreMovies}>

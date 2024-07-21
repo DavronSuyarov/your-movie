@@ -1,16 +1,14 @@
 import PropTypes, { number } from "prop-types"
 import { useEffect, useState } from "react"
-import MovieService from "../../services/movie-service"
+import useMovieService from "../../services/movie-service"
 import Error from "../error/error"
 import Spinner from "../spinner/spinner"
 import "./movie-info.scss"
 
 const MovieInfo = ({ movieId }) => {
 	const [movie, setMovie] = useState(null)
-	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState(false)
 
-	const movieService = new MovieService()
+	const { getDetailedMovie, loading, error } = useMovieService()
 
 	useEffect(() => {
 		updateMovie()
@@ -20,14 +18,7 @@ const MovieInfo = ({ movieId }) => {
 		if (!movieId) {
 			return
 		}
-
-		// this.setState({ loading: true })
-
-		movieService
-			.getDetailedMovie(movieId)
-			.then(res => setMovie(res))
-			.catch(() => setError(true))
-			.finally(() => setLoading(false))
+		getDetailedMovie(movieId).then(res => setMovie(res))
 	}
 
 	const errorContent = error ? <Error /> : null
